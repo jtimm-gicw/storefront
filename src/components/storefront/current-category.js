@@ -26,8 +26,14 @@ const CurrentCategory = ({ activeCategory }) => {
           <Typography component="h1" variant="h2" className={classes.categoryName} align="center" color="textPrimary" gutterBottom>
             {activeCategory}
           </Typography>
-          <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Category Description Goes Here
+          <Typography component="h1"
+          variant="h2"
+          className={classes.categoryName}
+          align="center"
+          color="textPrimary"
+          gutterBottom
+        >
+          {activeCategory.displayName}
         </Typography>
         </Container>
       </div>

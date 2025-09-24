@@ -27,7 +27,7 @@ const Header = props => {
         <Grid container>
           <Grid item xs>
             <Typography variant="h4">
-              Our Store
+              Buy It!
             </Typography>
           </Grid>
         </Grid>
