@@ -45,7 +45,7 @@ const Products = ({ products, activeCategory })  => {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image={`https://source.unsplash.com/random?${product.name}`} //fix
+                  image={`https://source.unsplash.com/featured/?    ${encodeURIComponent(product.name)}`}
                   title={product.name}
                 />
                 <CardContent className={classes.cardContent}>
