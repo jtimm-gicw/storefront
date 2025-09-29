@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { When } from 'react-if';
 
-import { makeStyles } from 'tss-react/mui';
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container';
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container';
 
-const useStyles = makeStyles()((theme) => ({
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },
@@ -17,7 +19,7 @@ const useStyles = makeStyles()((theme) => ({
 
 const CurrentCategory = ({ activeCategory }) => {
 
-  const { classes } = useStyles();
+  const classes = useStyles();
 
   return (
     <When condition={!!activeCategory}>
@@ -34,7 +36,6 @@ const CurrentCategory = ({ activeCategory }) => {
     </When>
   );
 }
-
 
 const mapStateToProps = state => ({
   activeCategory: state.categories.activeCategory

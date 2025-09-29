@@ -1,5 +1,3 @@
-// creates the store that will hold and handle the apyload/data 
-
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
@@ -14,4 +12,3 @@ const store = () => {
 };
 
 export default store();
-

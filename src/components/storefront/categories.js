@@ -1,46 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Typography from '@mui/material/Typography';
-import { makeStyles } from 'tss-react/mui';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
-import { category, reset } from '../../store/products.js';
+import { category } from '../../store/categories.js';
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles((theme) => ({
   categories: {
     margin: theme.spacing(3),
   },
 }));
 
 const Categories = props => {
-
-  const { classes } = useStyles();
+  const classes = useStyles();
 
   return (
-    <div className={classes.categories} data-testid="categories">
+    <div className={classes.categories}>
       <Typography variant="h5">Browse our Categories</Typography>
       <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-        {props.categories.map(cat =>
+        {props.categories.map(cat => (
           <Button
-            key={cat._id}
+            key={cat._id || cat.name} // fallback key if _id missing
             color="primary"
             onClick={() => props.category(cat.name)}
           >
             {cat.displayName || cat.name}
           </Button>
-        )}
+        ))}
       </ButtonGroup>
     </div>
   );
 }
 
-const mapStateToProps = ({ store }) => ({
-  categories: store.categories,
+const mapStateToProps = state => ({
+  categories: state.categories.categoryList,
 });
 
-const mapDispatchToProps = { category, reset };
+const mapDispatchToProps = { category };
 
-// Instead of exploring our component, export it after it's been connected to the Redux store.
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
