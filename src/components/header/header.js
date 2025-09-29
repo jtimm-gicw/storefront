@@ -1,10 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {

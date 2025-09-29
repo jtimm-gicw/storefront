@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';

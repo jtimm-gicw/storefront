@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from '@mui/styles';
+
 
 import { category } from '../../store/categories.js';
 
