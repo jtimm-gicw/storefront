@@ -26,14 +26,8 @@ const CurrentCategory = ({ activeCategory }) => {
           <Typography component="h1" variant="h2" className={classes.categoryName} align="center" color="textPrimary" gutterBottom>
             {activeCategory}
           </Typography>
-          <Typography component="h1"
-          variant="h2"
-          className={classes.categoryName}
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          {activeCategory.displayName}
+          <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            Category Description Goes Here
         </Typography>
         </Container>
       </div>
@@ -41,8 +35,9 @@ const CurrentCategory = ({ activeCategory }) => {
   );
 }
 
-const mapStateToProps = ({ store }) => ({
-  activeCategory: store.activeCategory
+
+const mapStateToProps = state => ({
+  activeCategory: state.categories.activeCategory
 });
 
 export default connect(mapStateToProps)(CurrentCategory);

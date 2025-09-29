@@ -1,6 +1,6 @@
 // creates a an initial state for the categories and products they hold
 let initialState = [
-  { name: 'TV', category: 'electronics', price: 699.00, inStock: 5 },
+    { name: 'TV', category: 'electronics', price: 699.00, inStock: 5 },
     { name: 'Computer', category: 'electronics', price: 255.00, inStock: 15 },
     { name: 'Microwave', category: 'electronics', price: 79.00, inStock: 10 },
     { name: 'Headphones', category: 'electronics', price: 58.00, inStock: 34 },

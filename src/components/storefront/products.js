@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { makeStyles } from 'tss-react/mui';
 
+import { add } from '../../store/cart.js';
 
 const useStyles = makeStyles()((theme) => ({
   cardGrid: {
@@ -30,24 +31,22 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const Products = ({ products, activeCategory })  => {
-
-  const { classes } = useStyles();
-
-  const activeProducts = products.filter(product => product.category === activeCategory);
+const Products = props => {
+  const classes = useStyles();
 
   return (
-    <>
-      <Container className={classes.cardGrid} maxWidth="md">
-        <Grid container spacing={4}>
-          {activeProducts.map((product) => (
-            <Grid item key={product.name} xs={12} sm={6} md={4}>
+    <Container className={classes.cardGrid} maxWidth="md">
+      <Grid container spacing={4}>
+        {props.products
+          .filter(product => product.category === props.activeCategory)
+          .map(product => (
+            <Grid item key={product._id || product.name} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={`https://source.unsplash.com/featured/?    ${encodeURIComponent(product.name)}`}
-                  title={product.name}
-                />
+              <CardMedia
+                className={classes.cardMedia}
+        image={`https://picsum.photos/600/400?random=${Math.random()}`}
+                title={product.name}
+              />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
                     {product.name}
@@ -57,7 +56,7 @@ const Products = ({ products, activeCategory })  => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" color="primary">
+                  <Button size="small" color="primary" onClick={() => props.add(product)}>
                     Add To Cart
                   </Button>
                   <Button size="small" color="primary">
@@ -67,15 +66,16 @@ const Products = ({ products, activeCategory })  => {
               </Card>
             </Grid>
           ))}
-        </Grid>
-      </Container>
-    </>
+      </Grid>
+    </Container>
   );
 }
 
-const mapStateToProps = ({ store }) => ({
-  products: store.products,
-  activeCategory: store.activeCategory
+const mapStateToProps = state => ({
+  products: state.products,
+  activeCategory: state.categories.activeCategory,
 });
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = { add };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
