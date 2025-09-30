@@ -5,9 +5,7 @@ import Categories from './categories';
 import Products from './products';
 import SimpleCart from '../cart/simple-cart';
 
-
-const Store = props => {
-
+const Storefront = () => {
   return (
     <section className="store">
       <Categories />
@@ -16,6 +14,6 @@ const Store = props => {
       <SimpleCart />
     </section>
   );
-}
+};
 
-export default Store;
+export default Storefront;

@@ -4,25 +4,21 @@ import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Typography from '@mui/material/Typography';
-import { makeStyles } from '@mui/styles';
-
 
 import { category } from '../../store/categories.js';
 
-const useStyles = makeStyles((theme) => ({
-  categories: {
-    margin: theme.spacing(3),
-  },
-}));
-
-const Categories = props => {
-  const classes = useStyles();
-
+const Categories = (props) => {
   return (
-    <div className={classes.categories}>
-      <Typography variant="h5">Browse our Categories</Typography>
-      <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-        {props.categories.map(cat => (
+    <div style={{ margin: '24px' }}>
+      <Typography variant="h5" gutterBottom>
+        Browse our Categories
+      </Typography>
+      <ButtonGroup
+        variant="text"
+        color="primary"
+        aria-label="text primary button group"
+      >
+        {props.categories.map((cat) => (
           <Button
             key={cat._id || cat.name} // fallback key if _id missing
             color="primary"
@@ -34,9 +30,9 @@ const Categories = props => {
       </ButtonGroup>
     </div>
   );
-}
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   categories: state.categories.categoryList,
 });
 

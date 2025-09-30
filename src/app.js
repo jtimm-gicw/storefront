@@ -6,7 +6,7 @@ import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import Storefront from './components/storefront/storefront.js';
 
-export default props => {
+const App = () => {
   return (
     <>
       <CssBaseline />
@@ -14,5 +14,7 @@ export default props => {
       <Storefront />
       <Footer />
     </>
-  )
+  );
 };
+
+export default App;
