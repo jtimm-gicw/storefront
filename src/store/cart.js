@@ -1,11 +1,11 @@
 let initialState = [];
 
-export default (state = initialState, action) => {
+const cartReducer = (state = initialState, action) => {
   let { type, payload } = action;
 
   switch (type) {
     case 'ADD_TO_CART':
-      let cart = state.filter(product => product.name !== payload.name);
+      let cart = state.filter((product) => product.name !== payload.name);
       return [...cart, payload];
 
     default:
@@ -13,9 +13,11 @@ export default (state = initialState, action) => {
   }
 };
 
+export default cartReducer;
+
 export const add = (product) => {
   return {
     type: 'ADD_TO_CART',
-    payload: product
+    payload: product,
   };
 };

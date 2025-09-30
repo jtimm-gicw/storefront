@@ -1,13 +1,13 @@
 let initialState = {
   activeCategory: '',
   categoryList: [
-    { name: 'electronics', displayName: 'Elecronics' },
+    { name: 'electronics', displayName: 'Electronics' },
     { name: 'food', displayName: 'Food' },
     { name: 'clothing', displayName: 'Clothing' },
-  ]
+  ],
 };
 
-export default (state = initialState, action) => {
+const categoriesReducer = (state = initialState, action) => {
   let { type, payload } = action;
 
   switch (type) {
@@ -18,10 +18,11 @@ export default (state = initialState, action) => {
   }
 };
 
+export default categoriesReducer;
+
 export const category = (name) => {
   return {
     type: 'CATEGORY',
-    payload: name
+    payload: name,
   };
 };
-
