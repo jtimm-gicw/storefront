@@ -1,0 +1,181 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "electronics",
+      "displayName": "Electronics"
+    },
+    {
+      "id": "2",
+      "name": "clothing",
+      "displayName": "Fashion"
+    },
+    {
+      "id": "3",
+      "name": "food",
+      "displayName": "Food"
+    },
+    {
+      "id": "4",
+      "name": "books",
+      "displayName": "Books & Literature"
+    },
+    {
+      "id": "5",
+      "name": "sports",
+      "displayName": "Sports & Games"
+    }
+  ],
+  "products": [
+    
+    {
+      "id": "1",
+      "name": "Laptop",
+      "description": "High-end gaming laptop",
+      "category": "electronics",
+      "inStock": 3
+    },
+    {
+      "id": "2",
+      "name": "Smartphone",
+      "description": "Latest model smartphone",
+      "category": "electronics",
+      "inStock": 8
+    },
+    {
+      "id": "5",
+      "name": "Headphones",
+      "description": "Noise-cancelling over-ear headphones",
+      "category": "electronics",
+      "inStock": 10
+    },
+    {
+      "id": "6",
+      "name": "Smartwatch",
+      "description": "Fitness smartwatch with heart rate monitor",
+      "category": "electronics",
+      "inStock": 5
+    },
+
+    
+    {
+      "id": "3",
+      "name": "T-Shirt",
+      "description": "Comfortable cotton t-shirt",
+      "category": "clothing",
+      "inStock": 14
+    },
+    {
+      "id": "4",
+      "name": "Jeans",
+      "description": "Stylish blue jeans",
+      "category": "clothing",
+      "inStock": 11
+    },
+    {
+      "id": "7",
+      "name": "Jacket",
+      "description": "Warm winter jacket",
+      "category": "clothing",
+      "inStock": 6
+    },
+    {
+      "id": "8",
+      "name": "Sneakers",
+      "description": "Casual comfortable sneakers",
+      "category": "clothing",
+      "inStock": 12
+    },
+
+    
+    {
+      "id": "9",
+      "name": "Bread",
+      "description": "Freshly baked whole grain bread",
+      "category": "food",
+      "inStock": 20
+    },
+    {
+      "id": "10",
+      "name": "Apples",
+      "description": "Crisp red apples",
+      "category": "food",
+      "inStock": 50
+    },
+    {
+      "id": "11",
+      "name": "Eggs",
+      "description": "Organic free-range eggs",
+      "category": "food",
+      "inStock": 30
+    },
+    {
+      "id": "12",
+      "name": "Cheese",
+      "description": "Cheddar cheese block",
+      "category": "food",
+      "inStock": 15
+    },
+
+
+    {
+      "id": "13",
+      "name": "Novel",
+      "description": "Bestselling fiction novel",
+      "category": "books",
+      "inStock": 7
+    },
+    {
+      "id": "14",
+      "name": "Biography",
+      "description": "Inspiring life story",
+      "category": "books",
+      "inStock": 5
+    },
+    {
+      "id": "15",
+      "name": "Science Book",
+      "description": "Introduction to physics concepts",
+      "category": "books",
+      "inStock": 8
+    },
+    {
+      "id": "16",
+      "name": "Cookbook",
+      "description": "Healthy recipes for home cooking",
+      "category": "books",
+      "inStock": 10
+    },
+
+    
+    {
+      "id": "17",
+      "name": "Football",
+      "description": "Official size football",
+      "category": "sports",
+      "inStock": 12
+    },
+    {
+      "id": "18",
+      "name": "Tennis Racket",
+      "description": "Lightweight graphite racket",
+      "category": "sports",
+      "inStock": 7
+    },
+    {
+      "id": "19",
+      "name": "Basketball",
+      "description": "Indoor/outdoor basketball",
+      "category": "sports",
+      "inStock": 10
+    },
+    {
+      "id": "20",
+      "name": "Yoga Mat",
+      "description": "Non-slip yoga mat",
+      "category": "sports",
+      "inStock": 15
+    }
+  ],
+  "cart": []
+}
