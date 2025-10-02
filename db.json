@@ -27,154 +27,165 @@
     }
   ],
   "products": [
-    
     {
       "id": "1",
       "name": "Laptop",
       "description": "High-end gaming laptop",
       "category": "electronics",
-      "inStock": 3
+      "inStock": 3,
+      "image": "https://source.unsplash.com/600x400/?laptop,computer"
     },
     {
       "id": "2",
       "name": "Smartphone",
       "description": "Latest model smartphone",
       "category": "electronics",
-      "inStock": 8
+      "inStock": 8,
+      "image": "https://source.unsplash.com/600x400/?smartphone,phone"
     },
     {
       "id": "5",
       "name": "Headphones",
       "description": "Noise-cancelling over-ear headphones",
       "category": "electronics",
-      "inStock": 10
+      "inStock": 10,
+      "image": "https://source.unsplash.com/600x400/?headphones,audio"
     },
     {
       "id": "6",
       "name": "Smartwatch",
       "description": "Fitness smartwatch with heart rate monitor",
       "category": "electronics",
-      "inStock": 5
+      "inStock": 5,
+      "image": "https://source.unsplash.com/600x400/?smartwatch,watch"
     },
-
-    
     {
       "id": "3",
       "name": "T-Shirt",
       "description": "Comfortable cotton t-shirt",
       "category": "clothing",
-      "inStock": 14
+      "inStock": 14,
+      "image": "https://source.unsplash.com/600x400/?tshirt,clothing"
     },
     {
       "id": "4",
       "name": "Jeans",
       "description": "Stylish blue jeans",
       "category": "clothing",
-      "inStock": 11
+      "inStock": 11,
+      "image": "https://source.unsplash.com/600x400/?jeans,denim"
     },
     {
       "id": "7",
       "name": "Jacket",
       "description": "Warm winter jacket",
       "category": "clothing",
-      "inStock": 6
+      "inStock": 6,
+      "image": "https://source.unsplash.com/600x400/?jacket,coat"
     },
     {
       "id": "8",
       "name": "Sneakers",
       "description": "Casual comfortable sneakers",
       "category": "clothing",
-      "inStock": 12
+      "inStock": 12,
+      "image": "https://source.unsplash.com/600x400/?sneakers,shoes"
     },
-
-    
     {
       "id": "9",
       "name": "Bread",
       "description": "Freshly baked whole grain bread",
       "category": "food",
-      "inStock": 20
+      "inStock": 20,
+      "image": "https://source.unsplash.com/600x400/?bread,bakery"
     },
     {
       "id": "10",
       "name": "Apples",
       "description": "Crisp red apples",
       "category": "food",
-      "inStock": 50
+      "inStock": 50,
+      "image": "https://source.unsplash.com/600x400/?apples,fruit"
     },
     {
       "id": "11",
       "name": "Eggs",
       "description": "Organic free-range eggs",
       "category": "food",
-      "inStock": 30
+      "inStock": 30,
+      "image": "https://source.unsplash.com/600x400/?eggs,kitchen"
     },
     {
       "id": "12",
       "name": "Cheese",
       "description": "Cheddar cheese block",
       "category": "food",
-      "inStock": 15
+      "inStock": 15,
+      "image": "https://source.unsplash.com/600x400/?cheese,dairy"
     },
-
-
     {
       "id": "13",
       "name": "Novel",
       "description": "Bestselling fiction novel",
       "category": "books",
-      "inStock": 7
+      "inStock": 7,
+      "image": "https://source.unsplash.com/600x400/?novel,book"
     },
     {
       "id": "14",
       "name": "Biography",
       "description": "Inspiring life story",
       "category": "books",
-      "inStock": 5
+      "inStock": 5,
+      "image": "https://source.unsplash.com/600x400/?biography,book"
     },
     {
       "id": "15",
       "name": "Science Book",
       "description": "Introduction to physics concepts",
       "category": "books",
-      "inStock": 8
+      "inStock": 8,
+      "image": "https://source.unsplash.com/600x400/?science,book"
     },
     {
       "id": "16",
       "name": "Cookbook",
       "description": "Healthy recipes for home cooking",
       "category": "books",
-      "inStock": 10
+      "inStock": 10,
+      "image": "https://source.unsplash.com/600x400/?cookbook,food"
     },
-
-    
     {
       "id": "17",
       "name": "Football",
       "description": "Official size football",
       "category": "sports",
-      "inStock": 12
+      "inStock": 12,
+      "image": "https://source.unsplash.com/600x400/?football,soccer"
     },
     {
       "id": "18",
       "name": "Tennis Racket",
       "description": "Lightweight graphite racket",
       "category": "sports",
-      "inStock": 7
+      "inStock": 7,
+      "image": "https://source.unsplash.com/600x400/?tennis,racket"
     },
     {
       "id": "19",
       "name": "Basketball",
       "description": "Indoor/outdoor basketball",
       "category": "sports",
-      "inStock": 10
+      "inStock": 10,
+      "image": "https://source.unsplash.com/600x400/?basketball,ball"
     },
     {
       "id": "20",
       "name": "Yoga Mat",
       "description": "Non-slip yoga mat",
       "category": "sports",
-      "inStock": 15
+      "inStock": 15,
+      "image": "https://source.unsplash.com/600x400/?yoga,mat"
     }
   ],
   "cart": []
