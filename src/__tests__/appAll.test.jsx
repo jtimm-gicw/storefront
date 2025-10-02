@@ -1,10 +1,26 @@
 // src/__tests__/appAll.test.jsx
+/**
+ * All-in-one integration + unit test file for the app.
+ *
+ * CHANGED: This file used to use `redux-mock-store`. That was replaced with
+ * a real `configureStore` (Redux Toolkit) test store so thunks run exactly
+ * the same way they do in the app (thunk middleware included by default).
+ *
+ * - createTestStore builds a real store with your reducers and optional preloadedState.
+ * - Tests render <App /> inside Provider using that store.
+ * - Async thunks are tested by calling the thunk with a mocked dispatch where appropriate.
+ *
+ * Why this change:
+ * - redux-mock-store does not execute thunk middleware the same way as the real store,
+ *   causing false negatives for async behavior. Using configureStore ensures parity.
+ */
 
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+
+// NEW: helper that creates a real configureStore with your reducers (thunk included)
+import createTestStore from '../test-utils/createTestStore';
 
 import App from '../App';
 import productsReducer from '../store/products';
@@ -12,11 +28,8 @@ import cartReducer, { add, remove, setCart, addToCartAsync, fetchCart } from '..
 import categoriesReducer, { category } from '../store/categories';
 
 // ----------------------
-// Setup Redux Mock Store
+// Sample initial state used to seed the test store
 // ----------------------
-const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
-
 const initialState = {
   categories: {
     activeCategory: 'electronics',
@@ -42,7 +55,9 @@ describe('💻 App Integration & Redux Tests', () => {
   let store;
 
   beforeEach(() => {
-    store = mockStore(initialState);
+    // NEW: create a fresh configureStore-based test store for each test,
+    // seeded with the sample initialState so thunks and selectors behave the same as app.
+    store = createTestStore(initialState);
   });
 
   // ----------------------
@@ -55,6 +70,7 @@ describe('💻 App Integration & Redux Tests', () => {
       </Provider>
     );
 
+    // These text queries assume your Header/Footer include similar text — adjust as needed.
     expect(screen.getByText(/Storefront/i)).toBeInTheDocument(); // Header check
     expect(screen.getByText('Laptop')).toBeInTheDocument(); // Product in active category
     expect(screen.queryByText('T-Shirt')).toBeNull(); // Product not in active category
@@ -62,10 +78,12 @@ describe('💻 App Integration & Redux Tests', () => {
   });
 
   // ----------------------
-  // Add to Cart dispatch test
+  // Add to Cart dispatch test (component triggers thunk)
   // ----------------------
   test('clicking Add To Cart dispatches async action', async () => {
-    store.dispatch = jest.fn();
+    // Spy on store.dispatch to see what is dispatched when clicking the button
+    const origDispatch = store.dispatch;
+    store.dispatch = jest.fn(origDispatch);
 
     render(
       <Provider store={store}>
@@ -73,36 +91,47 @@ describe('💻 App Integration & Redux Tests', () => {
       </Provider>
     );
 
-    const addButton = screen.getAllByText('Add To Cart')[0];
-    fireEvent.click(addButton);
+    // Wait for buttons to appear (Products may render after initial selectors)
+    const addButtons = await screen.findAllByText(/Add To Cart/i);
+    fireEvent.click(addButtons[0]);
 
-    expect(store.dispatch).toHaveBeenCalledTimes(1);
-    expect(store.dispatch.mock.calls[0][0]).toBeInstanceOf(Function); // Thunk function
+    // We expect at least one dispatch; the first thunk will be a function (thunk)
+    expect(store.dispatch).toHaveBeenCalled();
+    const firstCallArg = store.dispatch.mock.calls[0][0];
+    // Thunk creators dispatch functions, so the dispatched value should be a function
+    expect(typeof firstCallArg === 'function').toBe(true);
+
+    // Restore original dispatch to avoid interfering with other tests
+    store.dispatch = origDispatch;
   });
 
   // ----------------------
-  // Products Reducer Tests
+  // Products Reducer Tests (unit)
   // ----------------------
   describe('productsReducer', () => {
     const productsState = initialState.products.list;
 
     test('LOAD_PRODUCTS updates state', () => {
-      const action = { type: 'LOAD_PRODUCTS', payload: productsState };
-      expect(productsReducer([], action)).toEqual(productsState);
+      const action = { type: 'products/SET_PRODUCTS', payload: productsState };
+      const result = productsReducer(undefined, action);
+      // reducer shape: { list: [...] }
+      expect(result.list).toEqual(productsState);
     });
 
-    test('ADD_TO_CART updates product stock', () => {
+    test('UPDATE_PRODUCT updates product stock', () => {
+      // Build a state object with list to feed reducer
+      const stateWithList = { list: productsState };
       const action = {
-        type: 'ADD_TO_CART',
-        payload: { id: '1', name: 'Laptop', category: 'electronics', inStock: 2 },
+        type: 'products/UPDATE_PRODUCT',
+        payload: { id: '1', name: 'Laptop', inStock: 2 },
       };
-      const stateAfter = productsReducer(productsState, action);
-      expect(stateAfter.find(p => p.id === '1').inStock).toBe(2);
+      const stateAfter = productsReducer(stateWithList, action);
+      expect(stateAfter.list.find((p) => p.id === '1').inStock).toBe(2);
     });
   });
 
   // ----------------------
-  // Cart Reducer Tests
+  // Cart Reducer Tests (unit)
   // ----------------------
   describe('cartReducer', () => {
     const product = { id: '1', name: 'Laptop', category: 'electronics', inStock: 3 };
@@ -122,7 +151,7 @@ describe('💻 App Integration & Redux Tests', () => {
   });
 
   // ----------------------
-  // Categories Reducer Tests
+  // Categories Reducer Tests (unit)
   // ----------------------
   describe('categoriesReducer', () => {
     const categoriesState = initialState.categories;
@@ -139,8 +168,11 @@ describe('💻 App Integration & Redux Tests', () => {
   // ----------------------
   describe('Async Thunks', () => {
     beforeAll(() => {
+      // Mock fetch globally for thunk tests. The mock responses should line up
+      // with the sequence of network calls your thunks make.
       global.fetch = jest.fn(() =>
         Promise.resolve({
+          ok: true,
           json: () => Promise.resolve([{ id: '1', name: 'Laptop' }]),
         })
       );
