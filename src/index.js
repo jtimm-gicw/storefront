@@ -1,10 +1,10 @@
+// src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'; // ✅ React 18 uses createRoot instead of ReactDOM.render
 import { Provider } from 'react-redux';
 
 import App from './app.js';
-
-import store from './store/';
+import store from './store';
 
 function Main() {
   return (
@@ -14,5 +14,8 @@ function Main() {
   );
 }
 
+// ✅ React 18 change: use createRoot instead of ReactDOM.render
 const rootElement = document.getElementById('root');
-ReactDOM.render(<Main />, rootElement);
+const root = createRoot(rootElement);
+root.render(<Main />);
+

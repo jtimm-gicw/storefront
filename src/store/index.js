@@ -1,14 +1,21 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
+// src/store/index.js
+
+// ⬇️ CHANGED: Instead of createStore from 'redux',
+// we now import configureStore from Redux Toolkit.
+import { configureStore } from '@reduxjs/toolkit';
 
 import products from './products.js';
 import categories from './categories.js';
 import cart from './cart.js';
 
-let reducers = combineReducers({ categories, products, cart });
+// ⬇️ CHANGED: configureStore automatically sets up thunk middleware
+// and Redux DevTools support, so we no longer need composeWithDevTools.
+const store = configureStore({
+  reducer: {
+    categories,
+    products,
+    cart,
+  },
+});
 
-const store = () => {
-  return createStore(reducers, composeWithDevTools());
-};
-
-export default store();
+export default store;
