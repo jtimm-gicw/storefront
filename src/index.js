@@ -1,7 +1,7 @@
 // src/index.js
 import React from 'react';
 import { createRoot } from 'react-dom/client'; // ✅ React 18 uses createRoot instead of ReactDOM.render
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';  
 
 import App from './app.js';
 import store from './store';
