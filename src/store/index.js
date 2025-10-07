@@ -10,12 +10,15 @@ import cart from './cart.js';
 
 // ⬇️ CHANGED: configureStore automatically sets up thunk middleware
 // and Redux DevTools support, so we no longer need composeWithDevTools.
+// ✅ Added/Important: configureStore also allows us to easily swap in slice reducers
+// if we migrate products.js, cart.js, or categories.js to Redux Toolkit slices in the future.
 const store = configureStore({
   reducer: {
-    categories,
-    products,
-    cart,
+    categories, // categories state handled by categories reducer
+    products,   // products state handled by products reducer
+    cart,       // cart state handled by cart reducer
   },
 });
 
+// ✅ Export store for use in <Provider> in index.js / main entry point
 export default store;
